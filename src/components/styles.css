@@ -1,0 +1,42 @@
+
+
+
+.portifolio {
+    width: 100%;
+    justify-content: center;
+}
+
+.ffdf {
+    display: flex;
+    justify-content: center;
+
+}
+
+picture {
+    width: 200px;
+    height: 350px;
+    overflow: hidden;
+
+}
+
+li {
+    max-width: 350px;
+
+
+    padding: 8px;
+}
+
+
+
+img {
+    width: 200px;
+
+    overflow: hidden;
+
+}
+.hfpifmn {
+    font-size: 13px;
+    line-height: 8px;
+   
+
+}
