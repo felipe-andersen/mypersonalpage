@@ -9,12 +9,16 @@ export const Div = styled.div`
     bottom: 0;
     right: 0;
     /* margin: 0 30px 0 0; */
-    background-color: white;
+    background-color: transparent;
     display: flex;
-        flex-direction: column;
+    flex-direction: column;
     justify-content: center;
-        align-items: center;
-        gap: 12px;
+    align-items: center;
+    gap: 12px;
+
+    /* &:hover {
+        background-color: white;
+    } */
 
     span {
         display: flex;
@@ -31,6 +35,10 @@ export const Div = styled.div`
         width: 30px;
         height:30px;
         background-color: black;
+
+        svg {
+            fill: #fff;
+        }
     }
 
     ol {

@@ -1,5 +1,5 @@
 import { Div } from "./styles";
-
+import { BiSolidUpArrow } from 'react-icons/bi'
 export default function Social() {
     return (
         <>
@@ -24,7 +24,7 @@ export default function Social() {
 
             <span>+</span>
 
-<span className="pageUp">|</span>
+<span className="pageUp"><BiSolidUpArrow/></span>
 
 
 
