@@ -1,4 +1,4 @@
-'use client'
+
 import Image from 'next/image'
 import './styles.css'
 import { Div } from './styles'
@@ -11,12 +11,58 @@ import 'animate.css';
 import { redirect } from 'next/dist/server/api-utils'
 import {BsChevronCompactLeft, BsChevronCompactRight} from 'react-icons/bs'
 import Skeleton from '@mui/material/Skeleton';
-import { useState } from 'react'
+import React, { Suspense, useState } from 'react'
+import { cookies } from 'next/headers'
+import { Form } from './form'
+// import { formActions } from './formActions'
+import { Metadata, ResolvingMetadata } from 'next'
+import  SnakeBar  from './SnakeBar'
+import client from '@/graphql'
+import { ApolloProvider } from '@apollo/client'
+
 const item = true;
 
-export default function HomeTemplate(data:any, isLoading: true) {
+type Props = {
+    params: { id: string }
+    searchParams: { [key: string]: string | string[] | undefined }
+  }
+   
+  export async function generateMetadata(
+    { params, searchParams }: Props,
+    parent: ResolvingMetadata
+  ): Promise<Metadata> {
+    // read route params
+    const id = params.id
+   
+    // fetch data
+    const product = await fetch(`https://.../${id}`).then((res) => res.json())
+   
+    // optionally access and extend (rather than replace) parent metadata
+    const previousImages = (await parent).openGraph?.images || []
+   
+    return {
+      title: product.title,
+      openGraph: {
+        images: ['/some-specific-page-image.jpg', ...previousImages],
+      },
+    }
+  }
 
-    const [boxHeight, setBoxHeight] = useState<string>("0px");
+export default function HomeTemplate() {
+  
+    const isLoading = true
+
+
+    const SnakeBar = React.lazy(() => import('./SnakeBar'))
+
+    // const [boxHeight, setBoxHeight] = useState<string>("0px");
+
+
+    // const [value, setValue] = useState<any>("");
+
+    // const name = cookies().get("name");
+
+    // formActions({})
 
 
     return (
@@ -53,9 +99,9 @@ export default function HomeTemplate(data:any, isLoading: true) {
 
                         </div> */}
 
-                        <div className='nfkjsdl'>
+                        <div className='nfkjsdl' id='nfkjsdl'>
 
-                            <a>Felipe Andersen</a>
+                            <a id='title'>Felipe Andersen</a>
 
                             <nav>
                               
@@ -65,7 +111,7 @@ export default function HomeTemplate(data:any, isLoading: true) {
 
                                 <a><span>#</span><span>Portfólio </span></a>
 
-                                <a><span>#</span><span>Contato </span></a>
+                                <a href='#contact'><span>#</span><span>Contato </span></a>
 
                             </nav>
 
@@ -252,6 +298,8 @@ export default function HomeTemplate(data:any, isLoading: true) {
                   
                     <ul className='ffdf'>
 
+                        <Suspense fallback={<></>}>
+
                         <li>
 
                           <a href='www.lucakes.com' >Lucakes</a>
@@ -287,9 +335,7 @@ export default function HomeTemplate(data:any, isLoading: true) {
 
                                 <div className=''></div>
 
-                                <button title='Mostrar mais' onClick={() => {
-                                    setBoxHeight("min-content")
-                                }}><HiOutlineChevronDown/></button>
+                                <button title='Mostrar mais'><HiOutlineChevronDown/></button>
 
                                 <div className=''></div>
 
@@ -319,6 +365,8 @@ export default function HomeTemplate(data:any, isLoading: true) {
                             </div>
 
                         </li>
+
+                        </Suspense>
 
                         <li>
 
@@ -437,6 +485,72 @@ s
 
                         </li>
 
+                        <li>
+
+                          <a href='www.lucakes.com' >Lucakes</a>
+                          
+
+                            <picture className='picture'>
+
+                                { 
+                                
+                                isLoading ? 
+
+                                <img alt="website" src='https://ceblog.s3.amazonaws.com/wp-content/uploads/2021/03/10114044/image2-8.png'></img> 
+
+                                : 
+
+                                <img alt="website"src='https://ceblog.s3.amazonaws.com/wp-content/uploads/2021/03/10114044/image2-8.png'></img> 
+
+                                }
+
+                            </picture>
+
+                            <div className='jnbgyhd statistic'>
+                              <span>+ 11k users</span>&#183;
+                              <span>20 colaborators</span>&#183;
+                              <span>8 dowloads</span>
+                            </div>
+
+                            <div className='description' >
+                              Lorem ipsum dolor sit amet consectetur adipisicing elit. Doloribus, exercitationem perferendis. Dicta vitae maxime, ducimus nesciunt rem facere iste voluptatum exercitationem, dolores aperiam, dolor repudiandae in nulla laudantium reprehenderit itaque.
+                            </div>
+
+                            <div className='nfiutifgb'>
+
+                                <div className=''></div>
+
+                                <button title='Mostrar mais'><HiOutlineChevronDown/></button>
+
+                                <div className=''></div>
+
+                            </div>
+
+                            <div className='uigugn'>
+                                
+                                <div className='ubmnrkgi'>
+
+                                    <img src='https://img.ibxk.com.br/2019/02/17/17124052466014.jpg?ims=328x'></img>
+
+                                     <span className='owner'>Wallace - Diretor chef</span>
+
+                                </div>
+
+                               
+                                <span className='hfnmmg'>
+                                    <span>"</span>
+                                  Lucake é uma plataforma de estudos online, onde o usuário pode se cadastrar e ter acesso a diversas matéri
+                                  Lorem, ipsum dolor sit amet consectetur adipisicing elit. Dolorem maxime ipsa vero incidunt ad hic quod minus mollitia asperiores. Perferendis hic iste vel impedit autem obcaecati omnis deleniti eveniet deserunt. 
+                                    <span>"</span>
+                                </span>
+                            </div>
+
+                            <div className='gfimfw'>
+                             game
+                            </div>
+
+                        </li>
+
                     </ul>
 
                 </div>
@@ -456,37 +570,9 @@ s
 
                 </div>
 
-                <div className='jhgumpcf'>
-        
-                    <div className='mgjtufnf'>
-                    
-                        <h2>Contato</h2>
+                <div className='jhgumpcf' id='contact'>
 
-                        <p>Contrate um serviço, peça consultoria ou envie um proposta de trabalho</p>
-
-                        <form>
-
-                            <label>Nome*</label>
-
-                            <input type="text" placeholder='Ex.: Jonh'/>
-
-                            <label>Email*</label>
-
-                            <input type="text" placeholder='Ex.: jonh@exemple.com'/>
-
-                            <label>Telefone</label>
-
-                            <input type="text" placeholder='Ex.: 00000-0000'/>
-
-                            <label>Mensagem*</label>
-
-                            <input className='msg' type="text" placeholder='You mensage'/>
-
-                        </form>
-
-                        <button>Enviar mensagem</button>
-
-                    </div>
+                    <Form/>
 
                 </div>
 
@@ -517,6 +603,8 @@ s
                     </div>
 
                     <div>
+
+                        <button>Seus dados</button>
 
                         <button>Cookies</button>
 

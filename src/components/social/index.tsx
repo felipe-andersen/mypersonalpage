@@ -24,8 +24,8 @@ export default function Social() {
 
             <span>+</span>
 
-<span className="pageUp"><BiSolidUpArrow/></span>
-
+            <a href="#nfkjsdl" className="pageUp"><BiSolidUpArrow/></a>
+            
 
 
 

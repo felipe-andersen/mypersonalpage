@@ -1,7 +1,7 @@
 'use client'
 
 
-export const SnakeBar = () => {
+ const SnakeBar = () => {
     return (
         <>
 
@@ -16,3 +16,5 @@ export const SnakeBar = () => {
         </>
     )
 }
+
+export default SnakeBar

@@ -31,11 +31,15 @@ export const Div = styled.div`
         border-radius: 2454545px;
     }
 
-    span.pageUp {
+    a.pageUp {
         width: 30px;
         height:30px;
         background-color: black;
-
+        border-radius: 2454545px;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        
         svg {
             fill: #fff;
         }
