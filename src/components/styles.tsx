@@ -466,12 +466,40 @@ export const Div = styled.div`
             gap:12px;
 
             .cwrxplmij {
+                box-sizing: border-box;
                 width: 70%;
                 height: 70px;
                 overflow: hidden;
-             
-                padding: 0 24px;
+          
+                padding: 0 0px;
                 white-space: nowrap;
+
+                .blur_left_, .blur_right_ {
+                    position: absolute;
+                    height: 70px;
+                    width: 35px;
+                    background-color:red;
+                    border-radius: 0px;
+                    margin: 0 0px 0 0;
+                    background-color: #161616;
+                    background: rgb(22,22,22);
+                    background: rgb(22,22,22);
+                    background: -moz-linear-gradient(90deg, rgba(22,22,22,1) 0%, rgba(22,22,22,0) 100%);
+                    background: -webkit-linear-gradient(90deg, rgba(22,22,22,1) 0%, rgba(22,22,22,0) 100%);
+                    background: linear-gradient(90deg, rgba(22,22,22,1) 0%, rgba(22,22,22,0) 100%);
+                    filter: progid:DXImageTransform.Microsoft.gradient(startColorstr="#161616",endColorstr="#161616",GradientType=1);
+                    padding: 0;
+
+                    &:hover {
+                        background-color: transparent;
+                        transition:background-color 0.7s ease 0s;
+                    }
+                }
+
+                .blur_right_ {
+                    transform: scaleX(-1);
+                    margin: 0 0 0 calc(70% - 117px);
+                }
 
                 span {
                     width: min-content;
@@ -501,9 +529,12 @@ export const Div = styled.div`
                 justify-content: center;
                 align-items: center;
                 background-color: #303030;
+                width: 35px;
+                height: 35px;
+                padding: 0;
 
                 svg {
-                    transform: scale(200%);
+                    transform: scale(100%);
                     fill: white;
                 }
 
@@ -837,76 +868,13 @@ export const Div = styled.div`
         width: 100%;
         padding: 70px 24px;
         background-color: #ffffff;
-        background-image: url("https://wallpaper-house.com/data/out/11/wallpaper2you_472547.jpg");
+        background-image: url("https://cutewallpaper.org/21/abstract-black-wallpaper/61010888.jpg");
+  
+        
     }
 
-    .mgjtufnf {
-        display: flex;
-        flex-direction: column;
-        justify-content: flex-start;
-        align-items: center;
-        text-align: center;
-        padding: 70px 24px;
-        background-color: #fffcf5;
-        background-color: #f5f5f5;
-        width: 500px;
-    
 
-        h2 {
-            margin: 0 0 12px 0;
-            font-size:24px;
-        }
-
-        p {
-            margin: 0 0 12px 0;
-            font-size: 18px;
-            max-width: 400px;
-        }
-
-        form {
-            padding: 24px 0;
-            display: flex;
-            flex-direction: column;
-            gap: 12px;
-            width: 100%;
-
-            label {
-                
-                display: flex;
-                justify-content: flex-start;
-                font-size: 14px;
-            }
-
-            input {
-                height: 40px;
-                border: 1px solid #b9b9b9;
-                border-radius: 3px;
-                width: 100%;
-                padding: 0 0 0 12px;
-               
-            }
-
-            input.msg {
-                height: 120px;
-            }
-        }
-
-        button {
-            height: 40px;
-            border-radius: 3px;
-            width: 100%;
-            background-color: green;
-            color: white;
-        }
-
-        button:hover {
-            height: 40px;
-            border-radius: 3px;
-
-            background-color: #00a000;
-            color: white;
-        }
-    }
+        
 
 
     footer {

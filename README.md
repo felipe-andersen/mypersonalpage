@@ -35,30 +35,18 @@ The easiest way to deploy your Next.js app is to use the [Vercel Platform](https
 
 Check out our [Next.js deployment documentation](https://nextjs.org/docs/deployment) for more details.
 
-## Subindo o container
+## Trabalhando com containers
 
-dpage/pgadmin4
+Passe as variaveis de ambiente no arquivo .env ou .env.development
 
 ```
-sudo docker container run --name pgadmin4_hgfg \
- --network mynetwork \
- -p 180:80 \
- -e PGADMIN_DEFAULT_EMAIL=felipe.coutinho.psl@gmail.com \
- -e PGADMIN_DEFAULT_PASSWORD=123 \
- -d dpage/pgadmin4
+docker compose up -d
 
 ```
 
-postgres
+# Rodando o Dbeaver
 
 ```
-sudo docker container run --name postgres \
---network mynetwork \
- -p 15432:5432 \
- -e POSTGRES_USER=myPersonalPage \
- -e POSTGRES_PASSWORD=123 \
- -d postgres
+docker container run --name dbeaver -p 80:80  -network your-natwork -e dbeaver -d
 
 ```
-
-sudo docker commit f5fg27gh myPersonalPage/postgres:version

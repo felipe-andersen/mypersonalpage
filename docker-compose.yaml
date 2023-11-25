@@ -1,0 +1,52 @@
+
+version: '3.8'
+
+networks:
+    myPP_net:
+        driver: bridge
+
+services:
+    redis:
+        image: redis
+        container_name: redis
+        restart: always
+        networks:
+            - myPP_net
+
+    postgres:
+        image: postgres:latest
+        container_name: postgres
+        ports:
+            - 5435:5435
+        networks:
+            - myPP_net
+        restart: always
+
+    app:
+        build: .
+        container_name: app
+        networks:
+            - myPP_net
+        labels:
+            com.myPP.title: "Felipe Andersen "
+            com.myPP.description: "My personal website"
+        ports:
+            - 3000:3000
+        profiles:
+            - frontend
+        restart: always
+
+    redis-insight:
+        image: redislabs/redisinsight:latest
+        container_name: redis-insight
+        restart: always
+        ports:
+            - 8001:8001
+        networks:
+            - myPP_net
+        profiles:
+            - debug
+    
+
+    
+  

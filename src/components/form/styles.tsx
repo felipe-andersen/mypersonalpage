@@ -10,7 +10,7 @@ export const Div = styled.div`
     text-align: center;
     padding: 70px 24px;
     background-color: #fffcf5;
-    background-color: #f5f5f5;
+    background-color: rgba(255, 255, 255, 1);
     width: 500px;
     
     h2 {
@@ -40,31 +40,59 @@ export const Div = styled.div`
 
         input {
             height: 40px;
-            border: 1px solid #b9b9b9;
+            /* border: 1px solid #b9b9b9; */
             border-radius: 3px;
             width: 100%;
             padding: 0 0 0 12px;
-            
+            background-color: #e9e9e9;
         }
 
         input.msg {
             height: 120px;
+            padding: 12px;
+            display: flex;
+
+            &::placeholder {
+                color: #9b9b9b;
+            }
         }
+
+        textarea {
+            /* border: 1px solid #b9b9b9; */
+            border-radius: 3px;
+            width: 100%;
+            padding: 0 0 0 12px;
+            height: 120px;
+            padding: 12px;
+            resize: none;
+            background-color: #e9e9e9;
+        }
+
+        span {
+            font-size: 14px;
+            /* background-color:red; */
+            width: 100%;
+            padding: 0 6px;
+            margin: -6px 0 0 0;
+            display: flex;
+            
+        }
+
+        
     }
 
     button {
         height: 40px;
         border-radius: 3px;
         width: 100%;
-        background-color: green;
+        background-color: #141414;
         color: white;
-    }
 
-    button:hover {
-        height: 40px;
-        border-radius: 3px;
-
-        background-color: #00a000;
-        color: white;
+        &:hover {
+            height: 40px;
+            border-radius: 3px;
+            background-color: #1b1b1b;
+            color: white;
+        }
     }
 `;

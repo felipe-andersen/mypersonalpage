@@ -17,7 +17,7 @@ import { Form } from './form'
 // import { formActions } from './formActions'
 import { Metadata, ResolvingMetadata } from 'next'
 import  SnakeBar  from './SnakeBar'
-import client from '@/graphql'
+import client from '@/graphql-apoloServer'
 import { ApolloProvider } from '@apollo/client'
 
 const item = true;
@@ -208,21 +208,38 @@ export default function HomeTemplate() {
 
                 <div className='jfiudf'>
 
-                  <div>
+                  <div className='ngjpfgo'>
 
                       <h2>Habilidades</h2>
 
-                      <span>Métodos ágeis</span>
+                      <span className='btn' title='Voltar'>
+                          <BsChevronCompactLeft/>
+                      </span>
+                      
+                      <div className='cwrxplmij'>
 
-                      <span>Aprendizado contínuo</span>
+                          <span className='blur_left_'/>
 
-                      <span>Gestão de projetos</span>
+                          <span>Métodos ágeis</span>
 
-                      <span>Trabalho em equipe</span>
+                          <span>Aprendizado contínuo</span>
 
-                      <span>Resolução de Problemas</span>
+                          <span>Gestão de projetos</span>
 
-                      <span>Escrita e documentação</span>
+                          <span>Trabalho em equipe</span>
+
+                          <span>Resolução de Problemas</span>
+
+                          <span>Escrita e documentação</span>
+
+                          <span className='blur_right_'/>
+
+
+                      </div>
+
+                      <span className='btn' title='Próximo'>
+                          <BsChevronCompactRight/>
+                      </span>
 
                   </div>
                   
@@ -269,18 +286,27 @@ export default function HomeTemplate() {
 
                   <span className='line'/>
 
-                  <div> 
+                  <div className='ngjpfgo'> 
 
                       <h2>Ferramentas</h2>
 
-                    
-                      <span>Figma</span>
-                      <span>Trello</span>
-                      <span>Miro</span>
-                      <span>Docker</span>
-                      <span>Docker compose</span>
-                      <span>Git and Github</span>
-                      <span>Vscode</span>
+                      <span className='btn' title='Voltar'>
+                          <BsChevronCompactLeft/>
+                      </span>
+
+                      <div className='cwrxplmij'>
+                          <span>Figma</span>
+                          <span>Trello</span>
+                          <span>Miro</span>
+                          <span>Docker</span>
+                          <span>Docker compose</span>
+                          <span>Git and Github</span>
+                          <span>Vscode</span>
+                      </div>
+
+                      <span className='btn' title='Próximo'>
+                          <BsChevronCompactRight/>
+                      </span>
                     
                   </div>
 
@@ -553,6 +579,10 @@ s
 
                     </ul>
 
+                </div>
+
+                <div>
+                  hobby
                 </div>
 
                 <div className='kfdhfkjd'>

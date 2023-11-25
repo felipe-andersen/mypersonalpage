@@ -1,6 +1,5 @@
 'use client'
 import HomeTemplate from '@/components/home';
-import client from '@/graphql';
 import { ApolloProvider } from '@apollo/client';
 import Image from 'next/image';
 
