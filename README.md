@@ -6,11 +6,11 @@ Primeiro, execute o servidor de desenvolvimento:
 
 ```bash
 npm run dev
-# or
+# ou
 yarn dev
-# or
+# ou
 pnpm dev
-# or
+# ou
 bun dev
 ```
 
@@ -19,13 +19,13 @@ bun dev
 Passe as variaveis de ambiente no arquivo .env ou .env.development. Depois rode os containers com o seguinte comando:
 
 ```
-docker compose up -d
+$ docker compose up -d
 
 ```
 
-# Rodando o Dbeaver
+### Rodando o Dbeaver
 
 ```
-docker container run --name dbeaver -p 80:80  -network <your-network> -e dbeaver -d
+$ docker container run --name dbeaver -p 80:80  -network <your-network> -e dbeaver -d
 
 ```
