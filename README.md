@@ -1,3 +1,5 @@
+# My Personal Page
+
 This is a [Next.js](https://nextjs.org/) project bootstrapped with [`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app).
 
 ## Começando
@@ -16,23 +18,21 @@ bun dev
 
 ## Trabalhando com containers
 
-Passe as variaveis de ambiente no arquivo .env ou .env.development.
-
-<!-- Crie um drive de internet local:
-
-```
-docker network create mypp_network
-
-``` -->
-
-Rode os containers com o seguinte comando:
+Primeiro, passe as variaveis de ambiente no arquivo .env ou .env.development. Depois rode os containers com o seguinte comando:
 
 ```
 docker compose --profile frontend up -d
 
 ```
 
-Rodando manualmente os containers
+### Rodando manualmente os containers
+
+Primeiro você criar uma rede local gerenciada pelo Docker. Execute o comando:
+
+```
+docker network create mypp_network
+
+```
 
 <!-- -   Redis
 
@@ -46,7 +46,7 @@ docker container run -d --name redis --network mypp-network -v local-redis-stack
 
 ```
 
-docker container run -d --name postgres --network mypp-network -v ./pg-data:/var/lib/postgresql/data -p 5435:5435 --restart=unless-stopped postgres
+docker container run -d --name postgres --network mypp-network -v .data/pg-data:/var/lib/postgresql/data -p 5435:5435 --restart=unless-stopped postgres
 
 ```
 
@@ -62,13 +62,13 @@ docker container run -d --name redis-insight --network mypp-network -p 8001:8001
 
 ```
 
-docker container run -d --name cloudbeaver --network mypp-network -v ./cloudbeaver/workspace:/opt/cloudbeaver/workspace -p 8978:8978 --restart=unless-stopped dbeaver/cloudbeaver
+docker container run -d --name cloudbeaver --network mypp-network -v .data/cloudbeaver/workspace:/opt/cloudbeaver/workspace -p 8978:8978 --restart=unless-stopped dbeaver/cloudbeaver
 
 ```
 
 -   Redis Stack
 
 ```
-docker run -d --name redis-stack -p 6379:6379 -p 8001:8001 -v ./redis-stack:/data --restart=unless-stopped redis/redis-stack:latest
+docker run -d --name redis-stack -p 6379:6379 -p 8001:8001 -v ./data/redis-stack:/data --restart=unless-stopped redis/redis-stack:latest
 
 ```
