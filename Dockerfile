@@ -1,10 +1,10 @@
-FROM node:18-alpine
-WORKDIR /usr/share/app
+FROM node:alpine
+
 COPY package.json ./ 
 RUN npm install
 COPY . .
 CMD ["npm","run","dev"]
-EXPOSE 3000
+
 
 # ENTRYPOINT tail -f /dev/null
 

@@ -131,7 +131,7 @@ export default function HomeTemplate() {
 
                             <span className='animate__animated animate__lightSpeedInRight'>
 
-                                Construa, automatize <br/> e espanda sua <br/> presença digital
+                                Construe, automatize <br/> e espanda sua <br/> presença digital
 
                             </span>
 
@@ -162,7 +162,7 @@ export default function HomeTemplate() {
 
                         <div>
 
-                        <h2>Sobre mim</h2>
+                        <h2>Sobre miM</h2>
 
                         <q>Essas experiências me permitiram desenvolver habilidades interpessoais .</q>
                           

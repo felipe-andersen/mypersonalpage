@@ -16,16 +16,59 @@ bun dev
 
 ## Trabalhando com containers
 
-Passe as variaveis de ambiente no arquivo .env ou .env.development. Depois rode os containers com o seguinte comando:
+Passe as variaveis de ambiente no arquivo .env ou .env.development.
+
+<!-- Crie um drive de internet local:
 
 ```
-$ docker compose up -d
+docker network create mypp_network
+
+``` -->
+
+Rode os containers com o seguinte comando:
+
+```
+docker compose --profile frontend up -d
 
 ```
 
-### Rodando o Dbeaver
+Rodando manualmente os containers
+
+<!-- -   Redis
 
 ```
-$ docker container run --name dbeaver -p 80:80  -network <your-network> -e dbeaver -d
+
+docker container run -d --name redis --network mypp-network -v local-redis-stack.conf:/redis-stack.conf -p 6379:6379 --restart=unless-stopped redis
+
+``` -->
+
+-   Postgres
+
+```
+
+docker container run -d --name postgres --network mypp-network -v ./pg-data:/var/lib/postgresql/data -p 5435:5435 --restart=unless-stopped postgres
+
+```
+
+<!-- * Redis Insight
+
+```
+
+docker container run -d --name redis-insight --network mypp-network -p 8001:8001 --restart=unless-stopped redislabs/redisinsight:latest
+
+``` -->
+
+-   Cloudbeaver
+
+```
+
+docker container run -d --name cloudbeaver --network mypp-network -v ./cloudbeaver/workspace:/opt/cloudbeaver/workspace -p 8978:8978 --restart=unless-stopped dbeaver/cloudbeaver
+
+```
+
+-   Redis Stack
+
+```
+docker run -d --name redis-stack -p 6379:6379 -p 8001:8001 -v ./redis-stack:/data --restart=unless-stopped redis/redis-stack:latest
 
 ```

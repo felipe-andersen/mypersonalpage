@@ -2,39 +2,52 @@
 version: '3.8'
 
 networks:
-    myPP_net:
+    mypp_network:
         driver: bridge
 
 services:
+    app:
+        build: .
+        container_name: app
+        working_dir: /home/node/app
+        networks:
+            -  mypp_network
+        labels:
+            com.myPP.title: "Felipe Andersen "
+            com.myPP.description: "My personal website"
+        ports:
+            - 4000:3000
+        profiles:
+            - frontend
+        restart: always
+        volumes:
+            - ./:/home/node/app
+
     redis:
         image: redis
         container_name: redis
         restart: always
+        ports:
+            - 6379:6379
         networks:
-            - myPP_net
+            -  mypp_network
+        profiles:
+            - frontend
 
     postgres:
         image: postgres:latest
         container_name: postgres
         ports:
-            - 5435:5435
+            - 5435:5436
         networks:
-            - myPP_net
+            -  mypp_network
+        
         restart: always
-
-    app:
-        build: .
-        container_name: app
-        networks:
-            - myPP_net
-        labels:
-            com.myPP.title: "Felipe Andersen "
-            com.myPP.description: "My personal website"
-        ports:
-            - 3000:3000
         profiles:
             - frontend
-        restart: always
+        volumes:
+            - ./pg-data:/var/lib/postgresql/data
+        # entrypoint: docker-entrypoint.sh -c 'config_file=/etc/postgresql/postgresql.conf'
 
     redis-insight:
         image: redislabs/redisinsight:latest
@@ -43,10 +56,29 @@ services:
         ports:
             - 8001:8001
         networks:
-            - myPP_net
-        profiles:
-            - debug
+            -  mypp_network
     
+        profiles:
+            - frontend
+
+    dbeaver:
+        image: dbeaver/cloudbeaver
+        container_name: cloudbeaver
+        restart: always
+        ports:
+            - 8978:8978
+        networks:
+            -  mypp_network
+        profiles:
+            - frontend
+        volumes:
+            - ./cloudbeaver/workspace:/opt/cloudbeaver/workspace
+
+
+
+
+
+
 
     
   

@@ -668,10 +668,12 @@ export const Div = styled.div`
                         width: 100%;
                         margin: 24px 0 12px 0; 
                         border: 1px solid rgba(255,255,255,0);
+                        -webkit-transition: all 0.7s ease;
+                        transition: all 0.7s ease;
 
                         &:hover {
                             transform: scale(105%);
-                            transition: transform 1s ease 0s;
+                            -webkit-transform:scale(105%);
                         }
              
                  
